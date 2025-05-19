@@ -42,7 +42,7 @@ namespace DungeonSlime
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.MonoGameOrange);
 
             // TODO: Add your drawing code here
 
