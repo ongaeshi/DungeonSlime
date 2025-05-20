@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
+using System.Linq;
 
 namespace DungeonSlime
 {
@@ -14,7 +15,7 @@ namespace DungeonSlime
         private Texture2D _logo;
 
         public Game1() 
-            : base("Dungeon Slime", 1280, 720, fullScreen: false)
+            : base("Dungeon Slime", 1280/2, 720/2, fullScreen: false)
         {
         }
 
@@ -35,10 +36,21 @@ namespace DungeonSlime
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            // マウス左ボタンが押されている場合は逆回転
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                _rotation -= 0.01f;
+            }
+            else
+            {
+                // 通常は正回転
+                _rotation += 0.01f;
+            }
 
             base.Update(gameTime);
         }
+
+        private float _rotation = 0f;
 
         protected override void Draw(GameTime gameTime)
         {
@@ -50,9 +62,17 @@ namespace DungeonSlime
             // Draw the logo texture
             SpriteBatch.Draw(_logo, Vector2.Zero, Color.White);
 
+            // Enumerable.Rangeで複数のロゴを回転させて描画
+            Enumerable.Range(1, 10).ToList().ForEach(i =>
+            {
+                // ロゴの中心を原点にして回転
+                var position = new Vector2(i * 100, i * 100);
+                var origin = new Vector2(_logo.Width / 2f, _logo.Height / 2f);
+                SpriteBatch.Draw(_logo, position, null, Color.White, _rotation, origin, 1f, SpriteEffects.None, 0f);
+            });
+
             // Always end the sprite batch when finished.
             SpriteBatch.End();
-
 
             base.Draw(gameTime);
         }
