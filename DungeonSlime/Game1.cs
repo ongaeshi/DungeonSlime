@@ -51,12 +51,14 @@ namespace DungeonSlime
             SpriteBatch.Draw(
                 texture: _logo,
                 position: new Vector2(
-                    (Window.ClientBounds.Width * 0.5f) - (_logo.Width * 0.5f),
-                    (Window.ClientBounds.Height * 0.5f) - (_logo.Height * 0.5f)),
+                    Window.ClientBounds.Width,
+                    Window.ClientBounds.Height) * 0.5f,
                 sourceRectangle: null, 
                 color: Color.White,
-                rotation: 0.0f,
-                origin: Vector2.Zero,
+                rotation: MathHelper.ToRadians(90),
+                origin: new Vector2(
+                    _logo.Width,
+                    _logo.Height) * 0.5f,
                 scale: 1.0f,
                 effects: SpriteEffects.None, // 縦や横軸のフリップ
                 layerDepth: 0.0f); // テクスチャがレンダリングされる深さ
