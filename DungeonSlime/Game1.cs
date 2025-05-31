@@ -48,7 +48,18 @@ namespace DungeonSlime
             SpriteBatch.Begin();
 
             // Draw the logo texture
-            SpriteBatch.Draw(_logo, Vector2.Zero, Color.White);
+            SpriteBatch.Draw(
+                texture: _logo,
+                position: new Vector2(
+                    (Window.ClientBounds.Width * 0.5f) - (_logo.Width * 0.5f),
+                    (Window.ClientBounds.Height * 0.5f) - (_logo.Height * 0.5f)),
+                sourceRectangle: null, 
+                color: Color.White,
+                rotation: 0.0f,
+                origin: Vector2.Zero,
+                scale: 1.0f,
+                effects: SpriteEffects.None, // 縦や横軸のフリップ
+                layerDepth: 0.0f); // テクスチャがレンダリングされる深さ
 
             // Always end the sprite batch when finished.
             SpriteBatch.End();
