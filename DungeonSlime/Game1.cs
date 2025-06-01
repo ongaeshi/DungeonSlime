@@ -54,8 +54,8 @@ namespace DungeonSlime
                     Window.ClientBounds.Width,
                     Window.ClientBounds.Height) * 0.5f,
                 sourceRectangle: null, 
-                color: Color.White,
-                rotation: MathHelper.ToRadians(90),
+                color: Color.White * 0.5f,
+                rotation: 0,
                 origin: new Vector2(
                     _logo.Width,
                     _logo.Height) * 0.5f,
