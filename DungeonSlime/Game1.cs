@@ -7,9 +7,6 @@ namespace DungeonSlime
 {
     public class Game1 : Core
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
-
         // The MonoGame logo texture
         private Texture2D _logo;
 
