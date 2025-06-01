@@ -51,7 +51,7 @@ namespace DungeonSlime
             Rectangle wordmarkSourceRect = new Rectangle(150, 34, 458, 58);
 
             // Begin the sprite batch to prepare for rendering.
-            SpriteBatch.Begin();
+            SpriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack);
 
             // Draw only the icon portion of the texture.
             SpriteBatch.Draw(
@@ -67,7 +67,7 @@ namespace DungeonSlime
                     iconSourceRect.Height) * 0.5f,
                 1.0f,               // scale
                 SpriteEffects.None, // effects
-                0.0f                // layerDepth
+                1.0f                // layerDepth
             );
 
             // Draw only the word mark portion of the texture.
